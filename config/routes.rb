@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'trainers/index'
   root 'workouts#index'
   get '/user' => "welcome#index", :as => :user_root
   
