@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_11_231429) do
+ActiveRecord::Schema.define(version: 2020_05_12_110309) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2020_05_11_231429) do
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -50,6 +50,15 @@ ActiveRecord::Schema.define(version: 2020_05_11_231429) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.integer "phone"
+    t.string "street"
+    t.string "suburb"
+    t.string "state"
+    t.string "country"
+    t.integer "postcode"
+    t.string "account_type"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -64,10 +73,10 @@ ActiveRecord::Schema.define(version: 2020_05_11_231429) do
   end
 
   create_table "workouts", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
-    t.integer "price"
-    t.time "duration"
+    t.string "title", null: false
+    t.text "description", null: false
+    t.integer "price", null: false
+    t.time "duration", null: false
     t.bigint "user_id", null: false
     t.bigint "trainer_id", null: false
     t.datetime "created_at", precision: 6, null: false

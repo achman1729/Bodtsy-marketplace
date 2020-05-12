@@ -13,16 +13,7 @@
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <% if user_signed_in? %>
-    <li>
-      <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
-    </li>
-    <% end %>
-    <% if trainer_signed_in? %>
-    <li>
-      <%= link_to('Logout', destroy_trainer_session_path, method: :delete) %>        
-    </li>
-    <% end %>
+    <%= render "shared/topnav" %>
     <%= yield %>
   </body>
 </html>
