@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
+  root 'workouts#index'
+  get '/user' => "welcome#index", :as => :user_root
+  
   devise_for :trainers
   devise_for :users
-  root 'workouts#index'
   resources :workouts
   resources :carts, only: [:show, :edit, :update, :destroy]
 end

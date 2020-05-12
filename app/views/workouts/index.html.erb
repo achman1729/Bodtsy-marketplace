@@ -1,2 +1,23 @@
 <h1>Workouts#index</h1>
-<p>Find me in app/views/workouts/index.html.erb</p>
+<div>
+    <% if !trainer_signed_in? || !user_signed_in? %>
+        <h3>User Sign in</h3>
+        <li>
+        <%= link_to('Login', new_user_session_path) %>  
+        </li>
+        <li>
+        <%= link_to('Register', new_user_registration_path) %>
+        </li>
+    <% end %>
+</div>
+<div>
+    <% if !trainer_signed_in? || !user_signed_in? %>
+        <h3>Trainer sign in</h3>
+        <li>
+        <%= link_to('Login', new_trainer_session_path) %>  
+        </li>
+        <li>
+        <%= link_to('Register', new_trainer_registration_path) %>
+        </li>
+    <% end %>
+</div>
