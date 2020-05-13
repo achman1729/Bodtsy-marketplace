@@ -6,8 +6,8 @@ class TrainersController < ApplicationController
 
   private
 
-  def authenticate_trainer
-    if current_user.account_type == "trainer"
-    end
+  # def authenticate_trainer
+  #   if current_user.account_type == "trainer"
+  #   end
   end
 end

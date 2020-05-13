@@ -2,6 +2,7 @@ class WorkoutsController < ApplicationController
   before_action :find_workout_params, only: [:show, :edit, :update, :destroy]
 
   def index
+    @workout = Workout.all
   end
 
   def new
