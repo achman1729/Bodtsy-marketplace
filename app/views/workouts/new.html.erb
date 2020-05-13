@@ -1,2 +1,18 @@
 <h1>Workouts#new</h1>
-<p>Find me in app/views/workouts/new.html.erb</p>
+
+<%= form_with model:@workout, local: true do |form| %>
+    <div class="become-trainer-container">
+        <div class="main-trainer-form">
+            <div class="new-address-form">
+                <%= form.text_field :title, required: true, placeholder: "Title of the Workout", id:"long-input" %><br/>
+                <%= form.text_area :description, size: '50x10', required: true, placeholder: "Description", id:"long-input" %><br/>
+                <%= form.text_field :duration, required: true, placeholder: "Duration", id:"long-input" %><br/>
+                <%= form.number_field :price, required: true, placeholder: "Price", id:"long-input" %><br/>
+            </div>
+        </div>
+         <%= form.submit "Submit"%>
+    </div>
+
+<%end%>
+
+:title, :description, :price, :duration

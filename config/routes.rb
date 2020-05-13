@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get "/become-trainer", to: "users#new_trainer", as: "new_trainer"
   # update user to trainer
   post "/become-trainer", to: "users#create_trainer", as:"create_trainer"
+  
   # trainer dashboard view
   get "/trainer", to: "trainers#index", as: "trainer"
+  
 end
