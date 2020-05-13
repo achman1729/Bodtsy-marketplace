@@ -1,5 +1,5 @@
 class WorkoutsController < ApplicationController
-  before_action :find_workout, only: [:show, :edit, :update, :destroy]
+  before_action :find_workout_params, only: [:show, :edit, :update, :destroy]
 
   def index
   end
@@ -12,7 +12,8 @@ class WorkoutsController < ApplicationController
     @workout = Workout.new(workout_params)
     @workout.user_id = current_user.id
     if @workout.save
-      redirect_to :show
+      #redirect to trainer index page
+      redirect_to trainer_path
     else
       redeirect_to :new
     end
