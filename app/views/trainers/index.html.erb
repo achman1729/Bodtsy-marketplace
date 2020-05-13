@@ -2,3 +2,20 @@
 <p>Add a 
     <%= link_to('Workout', new_workout_path) %>
 </p>
+
+<%if @workout%>
+    <%@workout.each do |w|%>
+        <div>
+
+        </div>
+    <%end%>
+<%end%>
+
+   <%# t.string "title", null: false
+    t.text "description", null: false
+    t.integer "price", null: false
+    t.bigint "user_id", null: false
+    t.bigint "trainer_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "duration" %>

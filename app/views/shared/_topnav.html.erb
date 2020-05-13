@@ -3,7 +3,9 @@
 <% if user_signed_in? %>
     <li>
       <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
-      <p>become a <%= link_to(' trainer', new_trainer_path) %></p>        
+      <% if current_user.account_type != "trainer" %>
+        <p>become a <%= link_to(' trainer', new_trainer_path) %></p>      
+      <%end%>  
     </li>
 <%else%>
       <li>
