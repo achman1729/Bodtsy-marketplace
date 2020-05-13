@@ -1,1 +1,19 @@
 <h1>Workouts#index</h1>
+
+<%if @workout%>
+    <% @workout.each do |w|%>
+        <div>
+            <strong>Title: </strong>
+            <%= w.title %>
+            <br>
+            <strong>Description: </strong>
+            <%= w.description %>
+            <br>
+            <strong>Price: </strong>
+            <%= w.price %>
+            <br>
+            <strong>Duration: </strong>
+            <%= w.duration %>
+        </div>
+    <%end%>
+<%end%>

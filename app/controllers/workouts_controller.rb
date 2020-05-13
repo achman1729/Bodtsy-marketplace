@@ -16,7 +16,7 @@ class WorkoutsController < ApplicationController
       #redirect to trainer index page
       redirect_to trainer_path
     else
-      redeirect_to :new
+      redirect_to :new
     end
   end
 

@@ -9,5 +9,5 @@ class TrainersController < ApplicationController
   # def authenticate_trainer
   #   if current_user.account_type == "trainer"
   #   end
-  end
+  # end
 end
