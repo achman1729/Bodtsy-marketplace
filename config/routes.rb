@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
-  # get '/trainers/sign_in', to: "trainers#index", as: "trainer_root"
-  root "workouts#index"
   devise_for :users
+  
+  root "workouts#index"
+  
   resources :workouts
-  resources :carts, only: [:show, :edit, :update, :destroy]
+
+  # Cart routes
+  get "/users/:id/cart", to: "carts#show", as: "show_cart"
+  post "/users/:id/cart", to: "carts#create"
 
   # becoming a trainer
   get "/become-trainer", to: "users#new_trainer", as: "new_trainer"
