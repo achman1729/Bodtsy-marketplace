@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_13_191411) do
+ActiveRecord::Schema.define(version: 2020_05_15_040902) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,15 @@ ActiveRecord::Schema.define(version: 2020_05_13_191411) do
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "user_workouts", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "workout_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_user_workouts_on_user_id"
+    t.index ["workout_id"], name: "index_user_workouts_on_workout_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -64,16 +73,15 @@ ActiveRecord::Schema.define(version: 2020_05_13_191411) do
     t.string "title", null: false
     t.text "description", null: false
     t.integer "price", null: false
-    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "duration"
-    t.index ["user_id"], name: "index_workouts_on_user_id"
   end
 
   add_foreign_key "carts", "users"
   add_foreign_key "carts", "workouts"
+  add_foreign_key "user_workouts", "users"
+  add_foreign_key "user_workouts", "workouts"
   add_foreign_key "workout_categories", "categories"
   add_foreign_key "workout_categories", "workouts"
-  add_foreign_key "workouts", "users"
 end
