@@ -15,9 +15,10 @@
             <strong>Duration: </strong>
             <%= w.duration %>
         </div>
-        <div class="add-cart-button">
-            <%# sending user id and workout id %>
-            <%= button_to('Add to cart', show_cart_path(current_user.id),{ params: {workout_id: w.id} }) %>
-        </div>
+        <%if current_user%>
+            <div class="add-cart-button">
+                <%= button_to('Add to cart', show_cart_path(current_user.id),{ params: {workout_id: w.id} }) %>
+            </div>
+        <%end%>
     <%end%>
 <%end%>

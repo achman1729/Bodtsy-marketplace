@@ -1,7 +1,10 @@
 class TrainersController < ApplicationController
   # before_action :authenticate_trainer
   def index
-    @workout = Workout.all
+    if current_user.account_type == "trainer"
+      @workout = current_user.workouts
+    end
+    
   end
 
   private
