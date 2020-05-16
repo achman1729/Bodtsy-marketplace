@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  
+
   root "workouts#index"
   
   resources :workouts
@@ -15,6 +15,6 @@ Rails.application.routes.draw do
   post "/become-trainer", to: "users#create_trainer", as:"create_trainer"
   
   # trainer dashboard view
-  get "/trainer", to: "trainers#index", as: "trainer"
+  get "/users/trainer", to: "trainers#index", as: "trainer"
   
 end

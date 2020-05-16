@@ -1,14 +1,15 @@
 class CartsController < ApplicationController
   def show
     @workouts = current_user.workouts
-    # @cart = Cart.find(params[:id])
   end
 
   def edit
   end
 
   def create
+    user = current_user
     @cart = Cart.new(user_id: current_user.id, workout_id: params[:workout_id])
+    # @cart = user.cart.new()
     # render plain: params[:workout_id]
     if @cart.save
       # calling show method with cart.id

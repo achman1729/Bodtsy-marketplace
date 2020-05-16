@@ -3,26 +3,3 @@
     <%= link_to('Workout', new_workout_path) %>
 </p>
 
-<%if @workout%>
-    <%@workout.each do |w|%>
-        <div>
-            <strong>Title: </strong>
-            <%= w.title %>
-            <br>
-            <strong>Description: </strong>
-            <%= w.description %>
-            <br>
-            <strong>Price: </strong>
-            <%= w.price %>
-            <br>
-            <strong>Duration: </strong>
-            <%= w.duration %>
-        </div>
-        <div class="workout-edit-button">
-            edit button
-        </div>
-        <div class="workout-delete-button">
-            delete button
-        </div>
-    <%end%>
-<%end%>
