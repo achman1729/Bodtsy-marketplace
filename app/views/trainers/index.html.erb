@@ -1,10 +1,18 @@
 <h1>Trainers#index</h1>
 <p>Add a 
-    <%= link_to('Workout', new_workout_path) %>
+    <%= link_to('workout', new_workout_path) %>
 </p>
 
-<%if @workout%>
-    <%@workout.each do |w|%>
+<%# <% if @workouts%> %>
+    <%@workouts.each do |w|%>
+
+    <% if w.pictures.attached?%>
+        <% w.pictures.each do |p| %>
+            <p>
+        <%= image_tag p, width: 120 %>
+        </p>
+        <%end%>
+    <%end%>
         <div>
             <strong>Title: </strong>
             <%= w.title %>
@@ -17,12 +25,17 @@
             <br>
             <strong>Duration: </strong>
             <%= w.duration %>
+            <br>
+            <strong>Categories: </strong>
+            <% w.categories.each do |c| %>
+                <%= c.name %>
+            <%end%>
         </div>
-        <div class="workout-edit-button">
+        <div class="workouts-edit-button">
             edit button
         </div>
-        <div class="workout-delete-button">
+        <div class="workouts-delete-button">
             delete button
         </div>
-    <%end%>
-<%end%>
+    <% end%>
+<%# <% end%> %>

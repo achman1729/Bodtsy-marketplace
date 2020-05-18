@@ -2,6 +2,7 @@
 
 <%if @workout%>
     <% @workout.each do |w|%>
+    
         <div>
             <strong>Title: </strong>
             <%= w.title %>
@@ -14,11 +15,17 @@
             <br>
             <strong>Duration: </strong>
             <%= w.duration %>
+            <br>
+            <strong>Category: </strong>
+            <%w.categories.each do |c|%>
+                <%= c.name %>
+            <%end%>
         </div>
         <%if current_user%>
             <div class="add-cart-button">
                 <%= button_to('Add to cart', show_cart_path(current_user.id),{ params: {workout_id: w.id} }) %>
             </div>
+            
         <%end%>
     <%end%>
 <%end%>

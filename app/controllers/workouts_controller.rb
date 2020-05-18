@@ -10,13 +10,12 @@ class WorkoutsController < ApplicationController
   end
 
   def create
-    @workout = Workout.new(workout_params)
-    @workout.categories << Category.new(name: params[:workout][:name])
-    if @workout.save
-      redirect_to trainer_path
-    else
-      redirect_to :new
-    end
+    user = current_user
+    user.workouts.create(workout_params)
+    user.workouts.last.pictures.attach(params[:workout][:pictures])
+    user.workouts.last.categories.create(name: params[:workout][:name])
+
+    redirect_to trainer_path
   end
 
   def show
@@ -37,6 +36,6 @@ class WorkoutsController < ApplicationController
     end
 
     def workout_params
-      params.require(:workout).permit(:title, :description, :price, :duration)
+      params.require(:workout).permit(:title, :description, :price, :duration, :pictures => [])
     end
 end
