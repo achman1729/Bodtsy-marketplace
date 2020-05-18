@@ -29,7 +29,6 @@ class UsersController < ApplicationController
     #validation check and save
     if user.valid? && user.save
       redirect_to trainer_path
-      # (:option => "Trainer")
     else 
         render "new_trainer"
     end

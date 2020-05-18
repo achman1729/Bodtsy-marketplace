@@ -11,9 +11,8 @@ class WorkoutsController < ApplicationController
 
   def create
     @workout = Workout.new(workout_params)
-    # @workout.user_id = current_user.id
+    @workout.categories << Category.new(name: params[:workout][:name])
     if @workout.save
-      #redirect to trainer index page
       redirect_to trainer_path
     else
       redirect_to :new
