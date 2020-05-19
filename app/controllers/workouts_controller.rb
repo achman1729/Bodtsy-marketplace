@@ -1,5 +1,5 @@
 class WorkoutsController < ApplicationController
-  before_action :find_workout_params, only: [:show, :edit, :update, :destroy]
+  before_action :find_workout_params, only: [:edit, :update, :destroy]
 
   def index
     @workout = Workout.all
@@ -18,10 +18,8 @@ class WorkoutsController < ApplicationController
     redirect_to trainer_path
   end
 
-  def show
-  end
-
   def edit
+    
   end
 
   def update
