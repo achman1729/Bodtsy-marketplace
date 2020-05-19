@@ -2,8 +2,15 @@
 
 <%if @workout%>
     <% @workout.each do |w|%>
-    
+
         <div>
+            <% if w.pictures.attached?%>
+                <% w.pictures.each do |p| %>
+                    <p>
+                        <%= image_tag p, width: 120 %>
+                    </p>
+                <%end%>
+            <%end%>
             <strong>Title: </strong>
             <%= w.title %>
             <br>
