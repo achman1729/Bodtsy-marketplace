@@ -1,20 +1,33 @@
-<h1>Carts#show</h1>
+<h1>Cart </h1>
 
-<%# render wokouts from the Carts join table %>
-
-<%@workouts.each do |w|%>
+<%@cart_items.each do |c|%>
     <div>
+        <% if c.workout.pictures.attached?%>
+        <% c.workout.pictures.each do |p| %>
+            <p>
+        <%= image_tag p, width: 120 %>
+        </p>
+        <%end%>
+    <%end%>
         <strong>Title: </strong>
-        <%= w.title %>
+        <%= c.workout.title %>
         <br>
         <strong>Description: </strong>
-        <%= w.description %>
+        <%= c.workout.description %>
         <br>
         <strong>Price: </strong>
-        <%= w.price %>
+        <%= c.workout.price %>
         <br>
         <strong>Duration: </strong>
-        <%= w.duration %>
+        <%= c.workout.duration %>
+        <br>
+        <strong>Category: </strong>
+            <%c.workout.categories.each do |n|%>
+                <%= n.name %>
+            <%end%>
+    </div>
+    <div>
+        <%= link_to('Delete', show_cart_path(current_user), method: "delete") %>
     </div>
     <br>
 <%end%>

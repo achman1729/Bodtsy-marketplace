@@ -1,5 +1,47 @@
+<<<<<<< HEAD
 <h1>Trainers#index</h1>
 <div> 
     <%= link_to "Add a Workout", new_workout_path, class: "ui olive button" %>
 </div>
 
+=======
+<h1>Trainers Dashboard</h1>
+<p>Add a 
+    <%= link_to('workout', new_workout_path) %>
+</p>
+
+<% if @workouts%>
+    <%@workouts.each do |w|%>
+
+    <% if w.pictures.attached?%>
+        <% w.pictures.each do |p| %>
+            <p>
+        <%= image_tag p, width: 120 %>
+        </p>
+        <%end%>
+    <%end%>
+        <div>
+            <strong>Title: </strong>
+            <%= w.title %>
+            <br>
+            <strong>Description: </strong>
+            <%= w.description %>
+            <br>
+            <strong>Price: </strong>
+            <%= w.price %>
+            <br>
+            <strong>Duration: </strong>
+            <%= w.duration %>
+            <br>
+            <strong>Categories: </strong>
+            <% w.categories.each do |c| %>
+                <%= c.name %>
+            <%end%>
+        </div>
+        <div>
+            <%= link_to('Edit', edit_workout_path(w.id)) %>
+            <%= link_to('Delete', workout_path(w.id), method: "delete") %>
+        </div>
+    <% end%>
+<%end%>
+>>>>>>> 608f87b

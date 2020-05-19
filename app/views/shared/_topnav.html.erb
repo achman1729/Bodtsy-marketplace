@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 <div class="ui inverted menu">
     <%= link_to "Home", root_path, class: "item" %>
 
@@ -28,3 +29,41 @@
     </a>
   </div>
 </div>
+=======
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
+  <a class="navbar-brand" href="/">Bodsty</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <%# align right %>
+
+  <ul class="navbar-nav">
+    <% if user_signed_in? %>
+      <li class="nav-item">
+        <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "nav-link") %>
+      </li>
+        <%if current_user.account_type == "trainer" %>
+          <li class="nav-item">
+            <%= link_to("Trainer's Dashboard", trainer_path, class: "nav-link") %>
+          </li>
+        <%else%>
+          <li class="nav-item">
+            <%= link_to('Become a trainer', new_trainer_path, class: "nav-link") %>
+          </li>
+        <%end%>
+    <%else%>
+        <li class="nav-item">
+          <%= link_to('Login', new_user_session_path, class: "nav-link") %>  
+        </li>
+        <li>
+          <%= link_to('Register', new_user_registration_path, class: "nav-link") %>
+        </li>
+    <%end%>
+    <%if user_signed_in?%>
+    <li class="nav-item">
+      <%= link_to("Cart", show_cart_path(current_user), class: "nav-link" ) %>
+    </li>
+    <%end%>
+  </ul>
+</nav>
+>>>>>>> 608f87b
