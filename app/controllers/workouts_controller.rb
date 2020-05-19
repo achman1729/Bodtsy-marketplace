@@ -9,21 +9,10 @@ class WorkoutsController < ApplicationController
   end
 
   def create
-<<<<<<< HEAD
-    @workout = Workout.new(workout_params)
-    if @workout.save
-      #redirect to trainer index page
-      redirect_to trainer_path
-    else
-      redirect_to :new
-    end
-  end
-=======
     user = current_user
     user.workouts.create(workout_params)
     user.workouts.last.pictures.attach(params[:workout][:pictures])
     user.workouts.last.categories.create(name: params[:workout][:name])
->>>>>>> 608f87b
 
     redirect_to trainer_path
   end

@@ -1,40 +1,7 @@
 <h1>Workouts#index</h1>
 
-<div class="ui grid"> 
 <%if @workout%>
     <% @workout.each do |w|%>
-<<<<<<< HEAD
-    <div class="four wide column">
-        <div class="ui link cards">
-            <div class="card">
-                <div class="image">
-                    <img src="/images/avatar2/large/matthew.png">
-                </div>
-                <div class="content">
-                    <div class="header"><%= w.title %></div>
-                    <div class="description">
-                        <%= w.description %>
-                    </div>
-                </div>
-                <div class="extra content">
-                    <span class="right floated">
-                        <strong>Duration: </strong>
-                        <a><%= w.duration %> mins</a>
-                    </span>
-                    <span>
-                        <strong>Price: </strong>
-                        <%= number_to_currency(w.price) %>
-                    </span>
-                    <%if current_user%>
-                        <div class="fluid ui button">
-                            <%= button_to "Add to cart", show_cart_path(current_user.id),{ params: {workout_id: w.id} } %>
-                        </div>
-                    <%end%>
-                </div>
-            </div>
-        </div>
-    </div>
-=======
 
         <div>
             <% if w.pictures.attached?%>
@@ -65,10 +32,7 @@
             <div class="add-cart-button">
                 <%= button_to('Add to cart', show_cart_path(current_user.id),{ params: {workout_id: w.id} }) %>
             </div>
-            
         <%end%>
->>>>>>> 608f87b
     <%end%>
 <%end%>
-</div>
 

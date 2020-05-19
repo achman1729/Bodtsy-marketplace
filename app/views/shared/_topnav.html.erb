@@ -1,35 +1,4 @@
 
-<<<<<<< HEAD
-<div class="ui inverted menu">
-    <%= link_to "Home", root_path, class: "item" %>
-
-  <div class="right menu">
-      <% if user_signed_in? %>
-          <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "ui item" %>
-
-        <% if current_user.account_type == "trainer" %>
-
-            <%= link_to "Trainer's Dashboard", trainer_path,class: "ui item" %>
-        
-        <%else%>
-        
-          <%= link_to "Become a trainer", new_trainer_path, class: "ui item" %> 
-        
-        <%end%>
-        
-         <%= link_to "Cart", show_cart_path(current_user.id),class: "ui item"  %>  
-
-      <%else%>
-      
-        <%= link_to "Login", new_user_session_path, class: "ui item" %>
-      
-        <%= link_to "Register", new_user_registration_path, class: "ui item" %>
-        
-      <% end %>
-    </a>
-  </div>
-</div>
-=======
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
   <a class="navbar-brand" href="/">Bodsty</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,4 +35,3 @@
     <%end%>
   </ul>
 </nav>
->>>>>>> 608f87b
