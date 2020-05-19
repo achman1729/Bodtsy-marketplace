@@ -30,7 +30,7 @@
     <%end%>
     <%if user_signed_in?%>
     <li class="nav-item">
-      <%= link_to("Cart", show_cart_path(@workout), class: "nav-link" )%>
+      <%= link_to("Cart", show_cart_path(current_user.workouts.ids), class: "nav-link" )%>
     </li>
     <%end%>
   </ul>

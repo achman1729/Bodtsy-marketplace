@@ -1,9 +1,9 @@
-<h1>Trainers#index</h1>
+<h1>Trainers Dashboard</h1>
 <p>Add a 
     <%= link_to('workout', new_workout_path) %>
 </p>
 
-<%# <% if @workouts%> %>
+<% if @workouts%>
     <%@workouts.each do |w|%>
 
     <% if w.pictures.attached?%>
@@ -31,11 +31,9 @@
                 <%= c.name %>
             <%end%>
         </div>
-        <div class="workouts-edit-button">
-            edit button
-        </div>
-        <div class="workouts-delete-button">
-            delete button
+        <div>
+            <%= link_to('Edit', edit_workout_path(w.id)) %>
+            <%= link_to('Delete', workout_path(w.id), method: "delete") %>
         </div>
     <% end%>
-<%# <% end%> %>
+<%end%>

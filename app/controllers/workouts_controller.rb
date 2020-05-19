@@ -1,5 +1,4 @@
 class WorkoutsController < ApplicationController
-  before_action :find_workout_params, only: [:edit, :update, :destroy]
 
   def index
     @workout = Workout.all
@@ -19,20 +18,22 @@ class WorkoutsController < ApplicationController
   end
 
   def edit
-    
   end
 
   def update
+    @workout = Workout.find(params[:id])
+    @workout.update(workout_params)
+    redirect_to trainer_path, notice: 'Workout was successfully created.'
   end
 
   def destroy
+    @workout = current_user.workouts.find(params[:id])
+    # @workout = Workout.find(params[:id])
+    @workout.destroy
+    redirect_to trainer_path, notice: 'Workout was successfully deleted.'
   end
 
   private
-    def find_workout_params
-      @workout = Workout.find(params[:id])
-    end
-
     def workout_params
       params.require(:workout).permit(:title, :description, :price, :duration, :pictures => [])
     end

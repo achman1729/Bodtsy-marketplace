@@ -1,6 +1,6 @@
 class CartsController < ApplicationController
   def show
-    @workouts = current_user.workouts
+    @cart = current_user.cart
     # @cart = Cart.find(params[:id])
   end
 
