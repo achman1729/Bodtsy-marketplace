@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   # Cart routes
   get "/users/:id/cart", to: "carts#show", as: "show_cart"
   post "/users/:id/cart", to: "carts#create"
-  delete "/users/:id/cart", to: "carts#destroy"
+  delete "/users/:user_id/cart/:cart_item_id", to: "carts#destroy", as: "cart_item"
 
   # becoming a trainer
   get "/become-trainer", to: "users#new_trainer", as: "new_trainer"

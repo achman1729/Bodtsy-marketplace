@@ -17,9 +17,12 @@ class CartsController < ApplicationController
   end
 
   def destroy
-    @cart_items = Cart.where(user_id: current_user.id)
-    @cart_items.each do |workout|
-      workout.destroy
-    end
+    # user has many carts
+    # delete cart of a user 
+    cart = Cart.find(params[:cart_item_id])
+    cart.destroy
+    
+    redirect_to show_cart_path(current_user)
+    # render plain: params
   end
 end
