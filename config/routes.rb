@@ -4,11 +4,12 @@ Rails.application.routes.draw do
   root "workouts#index"
   
   resources :workouts
+  resources :orders, only: [:new]
 
   # Cart routes
   get "/users/:id/cart", to: "carts#show", as: "show_cart"
   post "/users/:id/cart", to: "carts#create"
-  
+
   delete "/users/:user_id/cart/:cart_item_id", to: "carts#destroy", as: "cart_item"
 
   # becoming a trainer
@@ -18,5 +19,4 @@ Rails.application.routes.draw do
   
   # trainer dashboard view
   get "/users/trainer", to: "trainers#index", as: "trainer"
-  
 end
