@@ -1,4 +1,5 @@
 class CartsController < ApplicationController
+  before_action :authenticate_user!
   def show
     @cart_items = Cart.where(user_id: current_user.id)
   end

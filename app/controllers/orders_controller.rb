@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  
+  before_action :authenticate_user!
   def new
     @cart_item = Cart.find(params[:cart_item_id])  
     @workout = @cart_item.workout

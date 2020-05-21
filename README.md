@@ -1,24 +1,21 @@
-# README
+# Bodsty - Marketplace application
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+* [Bodsty](https://agile-bastion-16832.herokuapp.com/) - Live website
+* [Github](https://github.com/achman1729/Bodtsy-marketplace) - Github link
 
-* Ruby version
 
-* System dependencies
+### R7. Identification of the problem solved by building this particular marketplace app.
 
-* Configuration
 
-* Database creation
+### R8. Why is it a problem that needs solving?
 
-* Database initialization
+### R9. Link to the deployed application:
 
-* How to run the test suite
+### R10. Link to the application's GitHub repository:
 
-* Services (job queues, cache servers, search engines, etc.)
+### R11. Description of marketplace application
 
-* Deployment instructions
 
-* ...
+### R12. Application User Stories
+
