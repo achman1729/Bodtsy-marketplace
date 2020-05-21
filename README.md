@@ -26,9 +26,9 @@ There are many platforms that one can go to for workouts, but usually they’re 
     - if the user choose to become a trainer, they can add a workout and delete their workout.
     - if the user after signing in choose to buy a workout, they can add to the cart and proceed to checkout and payment
 - Sitemap
-* [Sitemap Link](https://www.gloomaps.com/oeaNV3x3WY)
-
 * ![Application Sitemap](./Docs/Sitemap.PNG)
+
+* [Sitemap Link](https://www.gloomaps.com/oeaNV3x3WY)
 
 - Screenshots
 1. Homepage
