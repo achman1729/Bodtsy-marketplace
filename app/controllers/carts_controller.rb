@@ -19,8 +19,8 @@ class CartsController < ApplicationController
   def destroy
     # user has many carts
     # delete cart of a user 
-    cart = Cart.find(params[:cart_item_id])
-    cart.destroy
+    @cart = Cart.find(params[:cart_item_id])
+    @cart.destroy
     
     redirect_to show_cart_path(current_user)
     # render plain: params

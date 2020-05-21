@@ -1,37 +1,27 @@
 <h1>Cart </h1>
+<div class="d-flex flex-row">
+    <div class="row">
+    <% @cart_items.each do |cart_item|%>
+        <div class="card"  style="width: 20rem; margin: 20px; padding: 20px;">
+            <% if cart_item.workout.pictures.attached?%>
+                <%= image_tag cart_item.workout.pictures[0], class: "card-img-top" %>
+            <%end %>
+            <div class="card-body">
+                <h5 class="card-title">Title:<%= cart_item.workout.title%></h5>
+                <p class="card-text">Description: <%= truncate(cart_item.workout.description, length:50) %></p>
 
-<%@cart_items.each do |cart_item|%>
-    <div>
-        <% if cart_item.workout.pictures.attached?%>
-        <% cart_item.workout.pictures.each do |picture| %>
-            <p>
-        <%= image_tag picture, width: 120 %>
-        </p>
-        <%end%>
+                <%cart_item.workout.categories.each do |category|%>
+                    <p class="card-text">Category: <%= category.name %></p>
+                <%end%>
+                
+                <p class="card-text"><small class="text-muted">Price:<%= number_to_currency(cart_item.workout.price) %></small></p>
+                <p class="card-text"><small class="text-muted">Duration:<%= cart_item.workout.duration%></small></p>
+            </div>
+            <div class="col-xs-4">
+                <%= link_to('Buy now', new_order_path(cart_item_id: cart_item.id), class: "btn btn-success")%>
+                <%= link_to('Delete', cart_item_path(cart_item_id: cart_item.id, user_id: current_user.id), method: "delete", class: "btn btn-danger") %>
+            </div>
+        </div>
     <%end%>
-    <strong>Cart ID: </strong>
-        <%= cart_item.id %>
-        <br>
-        <strong>Title: </strong>
-        <%= cart_item.workout.title %>
-        <br>
-        <strong>Description: </strong>
-        <%= cart_item.workout.description %>
-        <br>
-        <strong>Price: </strong>
-        <%= cart_item.workout.price %>
-        <br>
-        <strong>Duration: </strong>
-        <%= cart_item.workout.duration %>
-        <br>
-        <strong>Category: </strong>
-            <%cart_item.workout.categories.each do |category|%>
-                <%= category.name %>
-            <%end%>
     </div>
-    <div>
-        <%= link_to('Delete', cart_item_path(cart_item_id: cart_item.id, user_id: current_user.id), method: "delete") %>
-        
-    </div>
-    <br>
-<%end%>
+</div>

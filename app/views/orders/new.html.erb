@@ -1,2 +1,50 @@
-<h1>Orders#new</h1>
-<p>Find me in app/views/orders/new.html.erb</p>
+
+<h1>Your Order</h1>
+<div class="d-flex flex-row">
+    <div class="row">
+    <% if @workout.pictures.attached?%>
+        <% @workout.pictures.each do |picture| %>
+            <div style="margin: 20px; padding: 20px;">
+                <%= image_tag picture, width: 120, class: "img-thumbnail" %>
+            </div>
+        <%end%>
+    <%end%>
+</div>
+</div>
+<div class="card" style="width: 18rem; margin: 20px;">
+    <div class="card-header">
+        <%= @workout.title %>
+    </div>
+    <div class="card-body">
+        <p class="card-text">Description: <%= @workout.description %></p>
+    </div>
+    <div class="card-body">
+        <p class="card-text">Price:  <%= number_to_currency(@workout.price) %></p>
+    </div>
+    <div class="card-body">
+        <p class="card-text"> Duration: <%= @workout.duration %></p>
+    </div>
+    <div class="card-body">
+        <p class="card-text">
+            Category: <%@workout.categories.each do |category|%>
+                <%= category.name %>
+            <%end%>
+        </p>
+    </div>
+</div>
+
+<button class="btn btn-success" id="pay-now" style="margin: 20px;">Checkout now</button>
+
+
+<script src="https://js.stripe.com/v3/"></script>
+
+<script>
+    function redirectToStripe(){
+        var stripe = Stripe('<%= Rails.application.credentials.dig(:stripe, :publishable_key)%>');
+        stripe.redirectToCheckout({
+            sessionId: '<%= @session.id %>'
+            }).then(function (result) {
+                });
+    }
+    document.querySelector("#pay-now").addEventListener("click", redirectToStripe)
+</script>

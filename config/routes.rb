@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   root "workouts#index"
   
   resources :workouts
-  resources :orders, only: [:new]
+
+  get "/orders/new", to: "orders#new", as: "new_order"
+  get "/orders/complete", to: "orders#complete", as: "order_complete"
+  get "/orders/cancel", to: "orders#cancel", as: "order_cancel"
 
   # Cart routes
   get "/users/:id/cart", to: "carts#show", as: "show_cart"

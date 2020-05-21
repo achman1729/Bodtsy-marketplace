@@ -1,20 +1,30 @@
-<h1>Workouts#new</h1>
+<div class="container login-container">
+  <div class="row justify-content-md-center">
+    <div class="col-md-4 login-form-1">
+
+<h3>new workout</h3>
 
 <%= form_with model:@workout, local: true do |form| %>
-    <div class="become-trainer-container">
-        <div class="main-trainer-form">
-            <div class="new-address-form">
-                <%= form.text_field :title, required: true, placeholder: "Title of the Workout" %><br/>
-                <%= form.text_area :description, size: '50x10', required: true, placeholder: "Description...", id:"long-input" %><br/>
-                <%= form.number_field :duration, required: true, placeholder: "Workout duration"%><br/>
-                <%= form.number_field :price, required: true, placeholder: "Price", id:"long-input" %><br/>
-                <div class="pictures">
-                    <%= form.label :pictures %>
-                    <%= form.file_field  :pictures, multiple: true, accept: 'image/png,image/gif,image/jpeg, image/jpg'%>
-                </div>
-                <%= form.text_field :name, required: true, placeholder: "Category"%>
-            </div>
-        </div>
-         <%= form.submit "Submit"%>
+    <div class="form-group">
+    <%= form.text_field :title, required: true, placeholder: "Title of the Workout" %>
+    </div>
+    <div class="form-group">
+    <%= form.text_area :description, size: '30x10', required: true, placeholder: "Description...", id:"long-input" %>
+    </div>
+    <div class="form-group">
+    <%= form.number_field :duration, required: true, placeholder: "Workout duration"%>
+    </div>
+    <div class="form-group">
+    <%= form.number_field :price, required: true, placeholder: "Price", id:"long-input" %>
+    </div>
+    <div class="form-group">
+        <%= form.label :pictures %>
+        <%= form.file_field  :pictures, multiple: true, accept: 'image/png,image/gif,image/jpeg, image/jpg'%>
+    </div>
+    <div class="form-group">
+    <%= form.text_field :name, required: true, placeholder: "Category"%>
+    </div>
+    <div class="form-group">
+         <%= form.submit "Submit", class: "btnSubmit"%>
     </div>
 <%end%>

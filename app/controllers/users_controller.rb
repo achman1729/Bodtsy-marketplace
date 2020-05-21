@@ -2,24 +2,19 @@ class UsersController < ApplicationController
   def index
   end
 
-  def edit
-  end
-
-  def new
-  end
-
-  def show
-  end
-
   def new_trainer
     @user = current_user
   end
 
   def create_trainer
     user = current_user
+
     # assingned the account to be trainer
     user.account_type = "trainer"
+    
     # saving address
+    user.first_name = params[:user][:first_name]
+    user.last_name = params[:user][:last_name]
     user.street = params[:user][:street]
     user.suburb = params[:user][:suburb]
     user.state = params[:user][:state]

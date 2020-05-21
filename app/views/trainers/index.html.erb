@@ -1,39 +1,36 @@
-<h1>Trainers Dashboard</h1>
-<p>Add a 
-    <%= link_to('workout', new_workout_path) %>
-</p>
+<%# <h1>Trainers Dashboard</h1> %>
 
-<% if @workouts%>
-    <%@workouts.each do |w|%>
+<h3>Add a <span>
+    <%= link_to 'workout', new_workout_path, class: "badge badge-secondary" %>
+</span></h3>
 
-    <% if w.pictures.attached?%>
-        <% w.pictures.each do |p| %>
-            <p>
-        <%= image_tag p, width: 120 %>
-        </p>
-        <%end%>
+<div class="d-flex flex-row">
+    <div class="row">
+    <% if @workouts%>
+        <%@workouts.each do |workout|%>
+            <div class="card" style="width: 20rem; margin: 20px; padding: 20px;">
+                <% if workout.pictures.attached?%>
+                    <%= image_tag workout.pictures[0],class: "card-img-top" %>
+                <%end %>
+                <div class="card-body">
+                    <h5 class="card-title">Title:<%= workout.title%></h5>
+                    
+                    <p class="card-text">Description: <%= workout.description %></p>
+                    
+                    <%workout.categories.each do |category|%>
+                        <p class="card-text">Category: <%= category.name %></p>
+                    <%end%>
+
+                    <p class="card-text"><small class="text-muted">Price:<%= number_to_currency(workout.price) %></small></p>
+                    
+                    <p class="card-text"><small class="text-muted">Duration:<%= workout.duration%></small></p>
+                </div>
+                <div class="col-xs-4">
+                    <%= link_to('Edit', edit_workout_path(workout.id), class: "btn btn-success") %>
+                    <%= link_to('Delete', workout_path(workout.id), method: "delete", class: "btn btn-danger") %>
+                </div>
+            </div>
+        <% end%>
     <%end%>
-        <div>
-            <strong>Title: </strong>
-            <%= w.title %>
-            <br>
-            <strong>Description: </strong>
-            <%= w.description %>
-            <br>
-            <strong>Price: </strong>
-            <%= w.price %>
-            <br>
-            <strong>Duration: </strong>
-            <%= w.duration %>
-            <br>
-            <strong>Categories: </strong>
-            <% w.categories.each do |c| %>
-                <%= c.name %>
-            <%end%>
-        </div>
-        <div>
-            <%= link_to('Edit', edit_workout_path(w.id)) %>
-            <%= link_to('Delete', workout_path(w.id), method: "delete") %>
-        </div>
-    <% end%>
-<%end%>
+    </div>
+</div>
